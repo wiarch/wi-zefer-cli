@@ -153,3 +153,11 @@ The web app at `/home/carrilloapps/Desarrollo/Nextjs/zefer` (GitHub: `carrilloap
 - Feature parity
 
 **Cross-compatibility rule**: always verify that a file encrypted by the CLI decrypts in the browser, and vice versa, before merging any change to the crypto or format layer.
+
+## WI Arch security requirements
+
+All changes must follow the WI Arch security baseline: https://github.com/wiarch/wi-zefer/blob/main/docs/WI-ARCH-SECURITY-BASELINE.md
+
+Before changing code, consult docs/WI-ARCH-SECURITY-ADOPTION.md and docs/WI-ARCH-SECURITY-REVIEW.md. Treat .zefer files and MCP tool arguments as untrusted. Never weaken KDF validation, parser bounds, authenticated encryption, filesystem safety, hidden secret input or overwrite protections to preserve convenience.
+
+Security-sensitive changes require adversarial tests for malformed containers, extreme KDF parameters, path traversal, decompression limits and MCP access boundaries. Preserve upstream file-format compatibility; coordinate any format or cryptographic change with the upstream project. Documentation is not proof of implementation, and do not claim a control is complete until code, tests and deployment evidence support it.
