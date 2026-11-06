@@ -149,3 +149,13 @@ zefer-cli supports decrypting legacy formats:
 | ZEFER2 | Read only | Legacy JSON format (no new files written) |
 
 New files are always written in ZEFB3 (single key) or ZEFR3 (with reveal key).
+
+## WI Arch Security Baseline
+
+This repository adopts the WI Arch-wide security standard. See [WI Arch Security Adoption](WI-ARCH-SECURITY-ADOPTION.md) for CLI-specific controls and [WI Arch Security Review](WI-ARCH-SECURITY-REVIEW.md) for the initial source-review findings and hardening backlog.
+
+Treat all .zefer files as untrusted input. Before invoking PBKDF2, validate the public iteration parameter. Bound all header, block, chunk, file and decompressed-output sizes. Validate decrypted metadata before using it for output paths or filesystem operations. Apply safe path handling and explicit overwrite controls.
+
+The MCP server is an additional security boundary: validate tool arguments, constrain filesystem access, minimize plaintext returned to clients, and assume MCP host logs/configuration may retain supplied arguments or outputs.
+
+Do not treat local attempt counters, expiration timestamps or client-side metadata as strong access control. Do not claim an independent audit or certification unless one has actually been completed.
