@@ -1,3 +1,5 @@
+> **WI Arch fork.** This repository is WI Arch's fork of [carrilloapps/zefer-cli](https://github.com/carrilloapps/zefer-cli) (MIT license). Badges, live site and wiki links below refer to the upstream project, not to this fork.
+
 <div align="center">
 
 <img src="https://zefer.carrillo.app/icon.svg" alt="Zefer" width="80" height="80" />
